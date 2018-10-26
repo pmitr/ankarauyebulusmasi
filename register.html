@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>PMI TR 2018</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" >
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css" >
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+    <!-- FontAwesome Style --> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">  
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      function postContactToGoogle() {
+          
+        var firstname=$('#firstName').val();
+        var lastname=$('#lastName').val();          
+        var pmiID=$('#pmiID').val();          
+        var sirket=$('#sirket').val();          
+        var mezuniyetYili=$('#mezuniyetYili').val(); 
+        var sehir=$('#sehir').val();            
+        var misafir=$('#misafir').val();            
+        var misafirBilgi=$('#misafirBilgi').val();          
+        var yemekBilgi=$('#yemekBilgi').val();          
+        var yourOpinion=$('#yourOpinion').val();  
+        var Note=$('#Note').val();  
+          
+
+        $.ajax({
+        url:"https://docs.google.com/forms/d/e/1FAIpQLSd8XYPiSEWj2OZlM6VJ08gKvzHZYJ_D5kRC_jJJ8PInBolyEQ/formResponse",            
+        data:{"entry_1730230078":firstname,"entry_96362537":lastname,"entry_2121813642":pmiID,"entry_649625129":sirket,"entry_569518948":mezuniyetYili,"entry_526321249":sehir,"entry_1825417936":misafir,   "entry_1196876124":misafirBilgi,"entry_333871038":yemekBilgi,"entry_1587140139":yourOpinion,"entry_198284793":Note},type:"POST",dataType:"xml",statusCode: {0:function() { window.location.replace("index.html");},200:function(){window.location.replace("index.html");}}
+        });          
+          
+        alert("Etkinlik için Kaydınız Oluşturulmuştur.");  
+     }
+        
+        function validate(evt) {
+              var theEvent = evt || window.event;
+
+              // Handle paste
+              if (theEvent.type === 'paste') {
+                  key = event.clipboardData.getData('text/plain');
+              } else {
+              // Handle key press
+                  var key = theEvent.keyCode || theEvent.which;
+                  key = String.fromCharCode(key);
+              }
+              var regex = /[0-9]|\./;
+              if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+              }
+            }
+    
+        function check() {             
+            $('#misafir').attr('disabled', false);                    
+        }
+               
+        function control() {  
+            
+            var firstName = $('#firstName');
+            var lastName = $('#lastName');
+            var pmiID = $('#pmiID');
+            var sehir = $('#sehir');
+            var sirket = $('#sirket');
+            var mezuniyetYili = $('#mezuniyetYili');
+            
+            if ((firstName.val() != null && firstName.val() != '') && 
+                (lastName.val() != null && lastName.val() != '') && 
+                (pmiID.val() != null && pmiID.val() != '') && 
+                (sehir.val() != null && sehir.val() != '') && 
+                (mezuniyetYili.val() != null && mezuniyetYili.val() != '') && 
+                (sirket.val() != null && sirket.val() != '') )
+            {  
+                 postContactToGoogle();
+            } 
+            else {  
+                    alert('Lütfen Kayıt Formunu Eksiksiz Doldurunuz.')  
+            }            
+        }
+        
+    </script>  
+    
+
+  </head>
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top border-bottom border-primary" style="background-color: white;">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+            </button>
+            <a href="index.html" class="navbar-brand"><img src="assets/img/pmilogo-1.png" alt=""></a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item active">
+                <a class="nav-link flex-grow-1 bd-highlight text-danger font-weight-bold" href="register.html" style="right: 120%;">
+                    KAYIT
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a class="nav-link class="p-2 flex-grow-1 bd-highlight"" href="index.html">
+                Ana Sayfa
+                </a>
+              </li>    
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#event-slides">
+                  Tema
+                </a>
+              </li>     
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#schedules">
+                  Program
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#gallery">
+                  Mekan
+                </a>
+              </li>     
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#pricing">
+                MİSAFİRLERİNİZ İÇİN
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#team">
+                  EKİP
+                </a>
+              </li>    
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#google-map-area">
+                  İLETİŞİM
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+          <li>
+            <a class="page-scrool" href="register.html" style="color: red;">KAYIT</a>
+          </li>    
+          <li>
+            <a class="page-scrool" href="index.html#header-wrap">Ana Sayfa</a>
+          </li>   
+          <li>
+             <a class="page-scroll" href="index.html#event-slides">Tema</a>
+          </li>     
+          <li>
+             <a class="page-scroll" href="index.html#schedules">Program</a>
+          </li>          
+          <li>
+            <a class="page-scroll" href="index.html#gallery">Mekan</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="index.html#pricing">Misafirleriniz İçin</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="index.html#team">EKİP</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="index.html#google-map-area">İLETİŞİM</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu End -->
+
+      </nav>
+      <!-- Navbar End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+      
+    <!-- Event Slides Section Start -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-12">
+            <div class="section-title-header text-center">
+              <h1 class="section-title wow fadeInUp mt-5" data-wow-delay="0.2s">KAYIT FORMU</h1>   
+                
+                <form  class="form-horizontal wow fadeInUp">
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationServer01">Adınız</label>
+                      <input type="text" class="form-control is-valid" name="firstName" id="firstName" placeholder="Adınızı Giriniz"  required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationServer02">Soyadınız</label>
+                      <input type="text" class="form-control is-valid" name="lastName" id="lastName" placeholder="Soyadınızı Giriniz" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationServer02">PMI ID</label>
+                      <input type="text" class="form-control is-valid" name="pmiID" id="pmiID" placeholder="PMI ID No Giriniz" onkeypress='validate(event)' required>
+                    </div>                     
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-3 mb-3">
+                      <label for="validationServer05">Yaşadığınız Şehir</label>
+                      <input type="text" class="form-control is-valid" name="sehir" id="sehir" placeholder="Yaşadığınız Şehir Giriniz" required>
+                    </div>   
+                    <div class="col-md-6 mb-3">
+                      <label for="validationServer03">Çalıştığınız Şirket</label>
+                      <input type="text" class="form-control is-valid" name="sirket" id="sirket" placeholder="Lütfen Çalıştığınız Şirket Giriniz" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label for="validationServer04">Mezuniyet Yılınız</label>
+                      <input type="text" class="form-control is-valid" name="mezuniyetYili" id="mezuniyetYili" placeholder="Mezuniyet Yılınızı Giriniz" required> 
+                    </div>
+                                        
+                  </div>
+                    
+                  <div class="form-row">
+                    <div class="col-md-6 mb-6">
+                      <label for="exampleFormControlTextarea1">Görüşleriniz</label>
+                        <textarea class="form-control" name="yourOpinion" id="yourOpinion" rows="2"></textarea>                        
+                    </div>                            
+                    <div class="col-md-6 mb-6">                        
+                      <label for="exampleFormControlTextarea1">Ek Not</label>
+                        <textarea class="form-control" name="Note" id="Note" rows="2"></textarea>                        
+                    </div>             
+                  </div>    
+                  
+                 <div class="form-row justify-content-end">                      
+                    <div class="col-md-2 mb-3">
+                        <div class="custom-control custom-checkbox mt-5">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" onclick="check()">
+                            <label class="custom-control-label" for="customCheck1">Misafir Getiriyorum</label>
+                        </div>                            
+                    </div>                         
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServer01">Misafir Ad Soyad</label>
+                        <input type="text" class="form-control is-invalid" name="misafir" id="misafir" placeholder="Misafir Adı Soyadı" disabled>
+                    </div>                     
+                  </div> 
+                    <input type="button" class="btn btn-primary mt-5" name="Submit" id="Submit" onclick="control()" value="Kayıt Ol"/>
+                </form>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </section>
+    <!-- Event Slides Section End -->      
+
+    <!-- Contact Us Section -->
+    <section id="contact-map" class="section-padding">
+      <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="text-center">                
+                <h3>İLETİŞİM</h3>
+                <p style="font-size: 18px;">Bizimle iletişime geçebileceğiniz mail adresleri :<br><br></p>
+                <div class="d-flex bd-highlight">
+                  <div class="p-2 w-100 bd-highlight">
+                      <i class="fa fa-envelope fa-5x"></i>
+                  </div>
+                  <div class="pt-3 flex-shrink-1 bd-highlight">ww
+                    <strong>irem.ozer@pmi.org.tr<br>elifnaz.gokceaslan@pmi.org.tr</strong>                
+                  </div>                
+                </div>                
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Us Section End -->  
+      
+      
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mt-2">
+            <div class="site-info">
+              <p>PMI TR Member Motion 2018</p>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+    	<i class="lni-chevron-up"></i>
+    </a>
+      
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/jquery.nav.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/jquery.slicknav.js"></script>
+    <script src="assets/js/nivo-lightbox.js"></script>
+    <script src="assets/js/main.js"></script>
+      
+  </body>
+</html>
